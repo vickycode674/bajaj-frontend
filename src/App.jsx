@@ -1,17 +1,19 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import JsonInput from "./components/JsonInput";
 import DropdownFilter from "./components/DropdownFilter";
 import "./App.css";
 
 function App() {
-
   useEffect(() => {
-    document.title = "RA2111028020029"; // Set your roll number here
+    document.title = "RA2111028020030"; // Set your roll number here
   }, []);
+
   const [jsonData, setJsonData] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [apiResponse, setApiResponse] = useState(null);
 
   const handleJsonSubmit = (parsedJson) => {
     setJsonData(parsedJson);
@@ -19,33 +21,22 @@ function App() {
     setFilteredData([]); // Reset the filtered data on new JSON submission
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!jsonData) return;
-    const data = jsonData.data || [];
-    let filtered = [];
 
-    if (selectedOptions.includes("alphabets")) {
-      filtered.push(...data.filter((item) => /^[A-Za-z]+$/.test(item)));
+    // Make a POST request to your API
+    try {
+      const response = await axios.post("https://your-backend-url/bfhl", jsonData);
+      setApiResponse(response.data); // Store the API response
+      // Add your filtering logic here, if needed
+    } catch (error) {
+      console.error("Error making API call:", error);
     }
-
-    if (selectedOptions.includes("numbers")) {
-      filtered.push(...data.filter((item) => /^[0-9]+$/.test(item)));
-    }
-
-    if (selectedOptions.includes("lowercase")) {
-      const lowercase = data.filter((item) => /^[a-z]+$/.test(item));
-      if (lowercase.length > 0) {
-        filtered.push(Math.max(...lowercase));
-      }
-    }
-
-    setFilteredData(filtered);
   };
 
   return (
     <div className="App">
       <h1>React JSON Processor</h1>
-
       {/* Table Structure */}
       <table className="input-table" border="1">
         <tbody>
@@ -73,12 +64,12 @@ function App() {
               </td>
             </tr>
           )}
-          {filteredData.length > 0 && (
+          {apiResponse && (
             <tr>
               <td>
                 <div className="response">
-                  <strong>Filtered Response: </strong>
-                  {filteredData.join(", ")}
+                  <strong>API Response: </strong>
+                  {JSON.stringify(apiResponse)}
                 </div>
               </td>
             </tr>
