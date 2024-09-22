@@ -1,0 +1,53 @@
+.App {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  .input-table {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .input-table td {
+    padding: 10px;
+  }
+  
+  textarea {
+    width: 90%; /* Adjust the width of the text input */
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .submit-btn {
+    width: 90%; /* Make the submit button as wide as the text input */
+    padding: 15px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .dropdown-select {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

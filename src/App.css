@@ -1,0 +1,52 @@
+/* App.css */
+
+.App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.json-input-container {
+  margin-bottom: 20px;
+}
+
+.json-textarea {
+  width: 96%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: monospace;
+}
+
+.submit-button {
+  padding: 20px 45%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+}
+
+.dropdown-container {
+  margin: 20px 0;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 8px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
